@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>AirRide Cabs – Airport & Outstation Taxi in Bangalore</title>
+  <meta name="description" content="Book Bangalore airport taxi, outstation, one way and local cabs at the lowest fares. 24/7 support, free cancellation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <meta name="theme-color" content="#0f3d3e" />
+  <meta property="og:title" content="AirRide Cabs – Bangalore Airport Taxi" />
+  <meta property="og:description" content="Airport, outstation, one way & local cabs in Bangalore. 24/7, free cancellation." />
+  <meta property="og:image" content="/assets/images/og-logo.jpg" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preload" href="/api/fares" as="fetch" crossorigin />
+  <link rel="stylesheet" href="/assets/css/styles.css?v=9" />
+</head>
+<body>
+  <!-- Icon sprite: reference with <svg class="ic"><use href="#i-name"/></svg> -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.42-.08-.12-.28-.2-.57-.34m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.41Z"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.59a1 1 0 0 1-.25 1.01l-2.2 2.19Z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></g></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></g></symbol>
+    <symbol id="i-toll" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V8l8-4 8 4v12"/><path d="M4 12h16M9 20v-4h6v4"/></g></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14v-5l-2-5H7l-2 5v5Z"/><path d="M5 12h14"/><circle cx="8" cy="17" r="2"/><circle cx="16" cy="17" r="2"/></g></symbol>
+  </svg>
+
+  <!-- ============ TOP BAR ============ -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span>🕒 24×7 service · Bangalore & all over South India</span>
+      <div class="topbar-links">
+        <a href="tel:+917416502923"><svg class="ic"><use href="#i-phone"/></svg>+91 74165 02923</a>
+        <a href="https://wa.me/917416502923" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg>WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="#" class="logo" aria-label="AirRide Cabs home">
+        <img src="/assets/images/logo.webp" alt="" width="52" height="52" class="logo-img" />
+        <span class="logo-text">Air<b>Ride</b><small>Cabs</small></span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#fleet" data-tab="airport">Airport Taxi</a>
+        <a href="#fleet" data-tab="outstation">Outstation</a>
+        <a href="#fleet" data-tab="oneway">One Way Drop</a>
+        <a href="#fleet" data-tab="local">Local Taxi</a>
+        <a href="#help">Help</a>
+      </nav>
+
+      <div class="header-cta">
+        <a href="#book" class="btn btn-primary">Book Taxi</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="book">
+    <div class="hero-bg"></div>
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <span class="pill">✨ Trusted by 1,00,000+ riders</span>
+        <h1>Bangalore Airport Taxi <br /><span class="hl">Pick or Drop, Anytime</span></h1>
+        <p class="lead">Clean cars, verified drivers and on-time pickups — every single time. Available 24×7 across Bangalore.</p>
+
+        <ul class="trust">
+          <li><strong>4.6★</strong><span>Rating</span></li>
+          <li><strong>Free</strong><span>Cancellation</span></li>
+          <li><strong>24/7</strong><span>Support</span></li>
+          <li><strong>35%</strong><span>Savings</span></li>
+        </ul>
+
+        <div class="hero-actions">
+          <a href="tel:+917416502923" class="call-chip">
+            <span class="call-icon"><svg class="ic"><use href="#i-phone"/></svg></span>
+            <span><small>Call to book instantly</small>+91 74165 02923</span>
+          </a>
+          <a href="https://wa.me/917416502923" target="_blank" rel="noopener" class="wa-chip">
+            <svg class="ic"><use href="#i-wa"/></svg>WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- Booking card -->
+      <div class="booking-card">
+        <div class="tabs" role="tablist">
+          <button class="tab active" data-trip="airport"><span class="tab-ic">✈️</span>Airport</button>
+          <button class="tab" data-trip="outstation"><span class="tab-ic">🛣️</span>Outstation</button>
+          <button class="tab" data-trip="oneway"><span class="tab-ic">➡️</span>One Way</button>
+          <button class="tab" data-trip="local"><span class="tab-ic">🏙️</span>Local</button>
+        </div>
+
+        <form id="bookingForm" class="booking-form">
+          <div class="airport-only seg">
+            <label><input type="radio" name="dir" value="Drop to Airport" checked /><span>Drop to Airport</span></label>
+            <label><input type="radio" name="dir" value="Pickup from Airport" /><span>Pickup from Airport</span></label>
+          </div>
+
+          <div class="field">
+            <label for="from">Pickup location</label>
+            <input id="from" type="text" placeholder="e.g. Koramangala, Bangalore" required />
+          </div>
+          <div class="field" id="toField">
+            <label for="to">Drop location</label>
+            <input id="to" type="text" placeholder="Kempegowda International Airport" />
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="date">Date</label>
+              <input id="date" type="date" required />
+            </div>
+            <div class="field">
+              <label for="time">Time</label>
+              <input id="time" type="time" required />
+            </div>
+          </div>
+          <div class="field">
+            <span class="label" id="carLabel">Car type</span>
+            <div class="picker" id="carPicker">
+              <button type="button" class="picker-btn" id="carBtn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="carLabel carBtn">
+                <img class="pk-img" alt="" width="64" height="40" />
+                <span class="pk-text"><b>Loading cars…</b><small></small></span>
+                <span class="pk-price"></span>
+                <svg class="pk-chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <ul class="picker-list" id="carList" role="listbox" aria-labelledby="carLabel" tabindex="-1" hidden></ul>
+            </div>
+            <!-- native select keeps the form value; the picker above drives it -->
+            <select id="car" class="sr-only" tabindex="-1" aria-hidden="true"></select>
+          </div>
+          <div class="field">
+            <label for="phone">Mobile</label>
+            <input id="phone" type="tel" placeholder="10-digit number" pattern="[0-9]{10}" required />
+          </div>
+          <!-- honeypot for bots: hidden from humans -->
+          <input type="text" name="company" id="company" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true" />
+          <p class="form-error" id="formError" role="alert"></p>
+          <button type="submit" class="btn btn-primary btn-block" id="submitBtn"><span>Book Now</span><svg class="ic"><use href="#i-arrow"/></svg></button>
+          <p class="form-note">No advance payment · We'll call you to confirm</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FLEET ============ -->
+  <section class="section" id="fleet">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Our fleet</span>
+        <h2>Choose your ride, see the fare upfront</h2>
+        <p>Safe, sanitised AC cars with professional chauffeurs. Pick the one that fits your group and luggage.</p>
+      </div>
+
+      <div class="filters" id="filters">
+        <button class="chip active" data-filter="all">All cars</button>
+        <button class="chip" data-filter="sedan">Sedan</button>
+        <button class="chip" data-filter="suv">SUV / MUV</button>
+        <button class="chip" data-filter="premium">Premium</button>
+        <button class="chip" data-filter="group">Group</button>
+      </div>
+
+      <div class="fleet-grid" id="fleetGrid" aria-busy="true">
+        <div class="car skeleton"></div><div class="car skeleton"></div><div class="car skeleton"></div><div class="car skeleton"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY US ============ -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Why AirRide</span>
+        <h2>Our promise on every trip</h2>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <div class="f-icon">🔄</div>
+          <h3>Free cancellation</h3>
+          <p>Plans changed? Cancel for free up to 3 hours before your pickup — no questions asked.</p>
+        </div>
+        <div class="feature">
+          <div class="f-icon">🧑‍✈️</div>
+          <h3>Professional drivers</h3>
+          <p>Background-verified, trained and courteous chauffeurs who know every route in the city.</p>
+        </div>
+        <div class="feature">
+          <div class="f-icon">💰</div>
+          <h3>Best prices</h3>
+          <p>We compare prices daily so you always get a great deal on every ride.</p>
+        </div>
+        <div class="feature">
+          <div class="f-icon">📍</div>
+          <h3>Live tracking</h3>
+          <p>Driver details and live location shared on WhatsApp before pickup for peace of mind.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">How it works</span>
+        <h2>Book in 3 easy steps</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><span>1</span><h3>Enter trip details</h3><p>Tell us pickup, drop, date and time.</p></div>
+        <div class="step"><span>2</span><h3>Pick your car</h3><p>See transparent fares and choose your ride.</p></div>
+        <div class="step"><span>3</span><h3>Ride relaxed</h3><p>Get driver details & enjoy the journey.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA BANNER ============ -->
+  <section class="cta-banner">
+    <div class="container cta-inner">
+      <div>
+        <h2>Need a cab right now?</h2>
+        <p>Our team is available 24 hours, 7 days a week.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="tel:+917416502923" class="btn btn-dark btn-lg"><svg class="ic"><use href="#i-phone"/></svg>Call +91 74165 02923</a>
+        <a href="https://wa.me/917416502923" target="_blank" rel="noopener" class="btn btn-wa btn-lg"><svg class="ic"><use href="#i-wa"/></svg>WhatsApp us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Happy customers</span>
+        <h2>Rated <span class="hl-text">4.6 / 5</span> by our riders</h2>
+      </div>
+      <div class="reviews">
+        <article class="review">
+          <div class="stars">★★★★★</div>
+          <p>“Driver arrived 10 minutes early for my 4 AM airport drop. Car was spotless. Will book again!”</p>
+          <div class="who"><span class="avatar">AK</span><div><b>Anjali K.</b><small>Whitefield, Bangalore</small></div></div>
+        </article>
+        <article class="review">
+          <div class="stars">★★★★★</div>
+          <p>“Took an Innova to Coorg with family. Very polite driver and the fare was exactly as quoted.”</p>
+          <div class="who"><span class="avatar">RS</span><div><b>Rahul S.</b><small>Mumbai</small></div></div>
+        </article>
+        <article class="review">
+          <div class="stars">★★★★☆</div>
+          <p>“24/7 support actually picks up the phone. Flight was delayed and they adjusted pickup instantly.”</p>
+          <div class="who"><span class="avatar">MP</span><div><b>Meera P.</b><small>Koramangala, Bangalore</small></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ROUTES ============ -->
+  <section class="section section-alt" id="routes">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Popular routes</span>
+        <h2>Where are you heading?</h2>
+      </div>
+      <div class="route-tabs">
+        <button class="chip active" data-routes="outstation">Outstation from Bangalore</button>
+        <button class="chip" data-routes="airport">Airport pickup / drop</button>
+        <button class="chip" data-routes="local">Local taxi</button>
+      </div>
+      <div class="routes" id="routesList"><!-- rendered by app.js --></div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ / HELP ============ -->
+  <section class="section" id="help">
+    <div class="container help-grid">
+      <div>
+        <span class="eyebrow">Help & FAQs</span>
+        <h2>Got questions?</h2>
+        <div class="faq">
+          <details open>
+            <summary>Are toll and parking charges included?</summary>
+            <p>Tolls and airport parking are optional extras and charged at actuals. Everything else is included in the shown fare.</p>
+          </details>
+          <details>
+            <summary>What happens if my flight is delayed?</summary>
+            <p>We track your flight. Your driver waits free for up to 45 minutes after landing.</p>
+          </details>
+          <details>
+            <summary>How do I pay?</summary>
+            <p>Pay the driver by cash or UPI at the end of the trip, or pay online in advance.</p>
+          </details>
+          <details>
+            <summary>Can I cancel my booking?</summary>
+            <p>Yes — cancellation is free up to 3 hours before pickup.</p>
+          </details>
+        </div>
+      </div>
+      <aside class="help-card">
+        <h3>Talk to us</h3>
+        <p>Our travel consultants are available 24/7.</p>
+        <a href="tel:+917416502923" class="help-row"><span class="hr-ic call"><svg class="ic"><use href="#i-phone"/></svg></span><div><small>Call us</small>+91 74165 02923</div><svg class="ic hr-go"><use href="#i-arrow"/></svg></a>
+        <a href="https://wa.me/917416502923" target="_blank" rel="noopener" class="help-row"><span class="hr-ic wa"><svg class="ic"><use href="#i-wa"/></svg></span><div><small>Chat on WhatsApp</small>+91 74165 02923</div><svg class="ic hr-go"><use href="#i-arrow"/></svg></a>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="#" class="logo logo-light" aria-label="AirRide Cabs home">
+          <img src="/assets/images/logo.webp" alt="" width="64" height="64" class="logo-img" loading="lazy" />
+          <span class="logo-text">Air<b>Ride</b><small>Cabs</small></span>
+        </a>
+        <p class="tagline">Your Ride • Our Priority</p>
+        <p>Affordable airport, outstation, one way and local taxis across Bangalore and South India.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <a href="#fleet">Airport Taxi</a>
+        <a href="#fleet">Outstation Taxi</a>
+        <a href="#fleet">One Way Drop</a>
+        <a href="#fleet">Local Taxi</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="#">About us</a>
+        <a href="#">Blog</a>
+        <a href="#">Driver login</a>
+        <a href="#help">Contact</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="#">Pay online</a>
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms & conditions</a>
+      </div>
+    </div>
+    <div class="container">
+      <details class="credits">
+        <summary>Photo credits</summary>
+        <ul id="photoCredits"></ul>
+        <p>Photos via Wikimedia Commons under the licences shown.</p>
+      </details>
+    </div>
+    <div class="container footer-bottom">© <span id="year"></span> AirRide Cabs. All rights reserved.</div>
+  </footer>
+
+  <!-- ============ FLOATING BUTTONS ============ -->
+  <div class="floating">
+    <a href="https://wa.me/917416502923" target="_blank" rel="noopener" class="float-btn wa" aria-label="Chat on WhatsApp"><svg class="ic"><use href="#i-wa"/></svg><span class="float-tip">Chat with us</span></a>
+    <a href="tel:+917416502923" class="float-btn call" aria-label="Call us"><svg class="ic"><use href="#i-phone"/></svg><span class="float-tip">Call now</span></a>
+  </div>
+
+  <!-- Mobile bottom action bar -->
+  <nav class="mobile-bar" aria-label="Quick actions">
+    <a href="tel:+917416502923" class="mb-call"><svg class="ic"><use href="#i-phone"/></svg>Call</a>
+    <a href="https://wa.me/917416502923" target="_blank" rel="noopener" class="mb-wa"><svg class="ic"><use href="#i-wa"/></svg>WhatsApp</a>
+    <a href="#book" class="mb-book"><svg class="ic"><use href="#i-car"/></svg>Book Now</a>
+  </nav>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="/assets/js/app.js?v=7" type="module"></script>
+</body>
+</html>
