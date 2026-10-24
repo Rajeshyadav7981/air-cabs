@@ -51,3 +51,15 @@ npm test
 
 `public/assets/images/cars/<vehicle-id>.webp` (800px wide, ~40–70 KB each). Source photos are from Wikimedia Commons; each one's author and licence are stored in `lib/fleet.js` and listed under "Photo credits" in the footer, as the CC licences require.
 To use your own photos: save them as `<vehicle-id>.webp` in that folder (e.g. `cwebp -q 78 -resize 800 0 photo.jpg -o tempo.webp`), and remove that car's `photo` credit if the photo is yours.
+
+## SEO / Google search
+
+Built in: page title + description, canonical `https://airridecabs.in/`, Open Graph tags, structured data
+(`WebSite` + `LocalBusiness` JSON-LD in `index.html`), `public/robots.txt`, `public/sitemap.xml`.
+
+After the domain is live:
+1. Vercel → Settings → Domains: add `airridecabs.in` + `www.airridecabs.in`, and redirect `air-cabs.vercel.app` → `airridecabs.in`.
+2. Google Search Console → add Domain property `airridecabs.in` (verify via DNS TXT) → submit `https://airridecabs.in/sitemap.xml` → URL Inspection → Request indexing.
+3. Create a Google Business Profile ("AirRide Cabs", category Taxi service) with the same phone + website.
+4. Check structured data at https://search.google.com/test/rich-results.
+If the domain ever changes, update the URLs in `index.html`, `robots.txt` and `sitemap.xml`.

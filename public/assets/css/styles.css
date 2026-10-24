@@ -113,6 +113,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; }
 .pill { display: inline-block; padding: 7px 16px; border-radius: 999px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); font-size: 14px; font-weight: 600; }
 .hero h1 { font-size: clamp(34px, 5vw, 56px); line-height: 1.1; font-weight: 800; letter-spacing: -1.5px; margin: 20px 0 16px; }
 .hl { color: var(--accent); }
+.h1-brand { display: block; font-size: .42em; letter-spacing: 3px; text-transform: uppercase; color: #4cff2e; margin-bottom: 10px; }
 .lead { font-size: 18px; color: #cfe5e3; max-width: 520px; }
 
 .trust { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 32px 0; max-width: 520px; }
@@ -282,6 +283,13 @@ button { font: inherit; cursor: pointer; border: 0; background: none; }
 .who { display: flex; align-items: center; gap: 12px; }
 .who small { display: block; color: var(--muted); }
 .avatar { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--primary); color: var(--accent); font-weight: 800; }
+
+/* ============ ABOUT ============ */
+.about { padding-top: 0; }
+.about-inner { max-width: 820px; text-align: center; }
+.about-inner h2 { margin-bottom: 14px; }
+.about-inner p { color: var(--muted); font-size: 16px; margin-top: 10px; }
+.about-inner a { color: var(--primary-2); font-weight: 700; text-decoration: underline; }
 
 /* ============ ROUTES ============ */
 .routes { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
