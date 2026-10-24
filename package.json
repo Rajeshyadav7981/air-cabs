@@ -6,6 +6,7 @@
   "engines": { "node": ">=20" },
   "scripts": {
     "dev": "node --env-file-if-exists=.env scripts/dev.js",
-    "test": "node --test scripts/*.test.js"
+    "test": "node --test scripts/*.test.js",
+    "test:alert": "node --env-file-if-exists=.env scripts/send-test-alert.js"
   }
 }
