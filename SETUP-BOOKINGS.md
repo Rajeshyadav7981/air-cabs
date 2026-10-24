@@ -2,7 +2,7 @@
 
 When a customer presses **Book Now**, the backend (`api/bookings.js`) sends the booking to:
 
-1. **WhatsApp** on +91 74165 02923: instant alert
+1. **WhatsApp** on +91 76769 50652: instant alert
 2. **Google Sheet**: one row per booking, so you have the full history and can update the status
 
 Both are free. Setup takes about 10 minutes, and you only do it once.
@@ -11,11 +11,11 @@ Both are free. Setup takes about 10 minutes, and you only do it once.
 
 ## 1) WhatsApp alert (CallMeBot), about 2 min
 
-1. On the phone that has WhatsApp for **7416502923**, save this contact: **+34 644 51 95 23** (CallMeBot; the number may change, check https://www.callmebot.com/blog/free-api-whatsapp-messages/).
+1. On the phone that has WhatsApp for **7676950652**, save this contact: **+34 644 51 95 23** (CallMeBot; the number may change, check https://www.callmebot.com/blog/free-api-whatsapp-messages/).
 2. Send it this WhatsApp message: `I allow callmebot to send me messages`
 3. You'll get a reply with your **API key** (e.g. `123456`).
 4. In Vercel → your project → **Settings → Environment Variables**, add:
-   - `CALLMEBOT_PHONE` = `+917416502923`
+   - `CALLMEBOT_PHONE` = `+917676950652`
    - `CALLMEBOT_APIKEY` = the key you received
 
 > CallMeBot is a free service for personal alerts. It only sends messages **to your own number**, which is exactly what we need. If you outgrow it, switch to the official WhatsApp Business Cloud API.

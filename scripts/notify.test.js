@@ -30,12 +30,12 @@ test("no channels configured → nothing sent", async () => {
 });
 
 test("WhatsApp (CallMeBot) and Google Sheet both receive the booking", async () => {
-  Object.assign(process.env, { CALLMEBOT_PHONE: "+917416502923", CALLMEBOT_APIKEY: "123", GOOGLE_SHEET_URL: "https://script.google.com/macros/s/x/exec", GOOGLE_SHEET_SECRET: "s3cret" });
+  Object.assign(process.env, { CALLMEBOT_PHONE: "+917676950652", CALLMEBOT_APIKEY: "123", GOOGLE_SHEET_URL: "https://script.google.com/macros/s/x/exec", GOOGLE_SHEET_SECRET: "s3cret" });
   mockFetch(url => (url.includes("callmebot") ? html("Message queued. You will receive it in a few seconds.") : json({ ok: true })));
   assert.deepEqual(await notifyBooking(booking), { channels: 2, delivered: 2 });
 
   const wa = new URL(calls.find(c => c.url.includes("callmebot")).url);
-  assert.equal(wa.searchParams.get("phone"), "+917416502923");
+  assert.equal(wa.searchParams.get("phone"), "+917676950652");
   assert.equal(wa.searchParams.get("apikey"), "123");
   assert.match(wa.searchParams.get("text"), /ARTEST1[\s\S]*Koramangala[\s\S]*₹699[\s\S]*9876543210/);
 
@@ -46,7 +46,7 @@ test("WhatsApp (CallMeBot) and Google Sheet both receive the booking", async () 
 });
 
 test("wrong CallMeBot key or sheet secret counts as a failure", async () => {
-  Object.assign(process.env, { CALLMEBOT_PHONE: "+917416502923", CALLMEBOT_APIKEY: "bad", GOOGLE_SHEET_URL: "https://script.google.com/macros/s/x/exec" });
+  Object.assign(process.env, { CALLMEBOT_PHONE: "+917676950652", CALLMEBOT_APIKEY: "bad", GOOGLE_SHEET_URL: "https://script.google.com/macros/s/x/exec" });
   mockFetch(url => (url.includes("callmebot") ? html("<p>APIKey is invalid.</p>") : json({ ok: false, error: "unauthorized" })));
   assert.deepEqual(await notifyBooking(booking), { channels: 2, delivered: 0 });
 });

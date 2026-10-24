@@ -1,5 +1,5 @@
 // ============ CONFIG ============
-const WHATSAPP_NUMBER = "917416502923";
+const WHATSAPP_NUMBER = "917676950652";
 
 // ============ STATIC DATA (SEO route links) ============
 const routes = {
@@ -39,7 +39,7 @@ async function loadFleet() {
     renderCarOptions();
     renderCredits();
   } catch {
-    $("#fleetGrid").innerHTML = `<p class="fleet-error">Couldn't load fares. Please call <a href="tel:+917416502923"><b>+91 74165 02923</b></a>.</p>`;
+    $("#fleetGrid").innerHTML = `<p class="fleet-error">Couldn't load fares. Please call <a href="tel:+917676950652"><b>+91 76769 50652</b></a>.</p>`;
   } finally {
     $("#fleetGrid").removeAttribute("aria-busy");
   }
