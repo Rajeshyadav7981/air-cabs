@@ -12,14 +12,25 @@
   },
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/",
       "has": [
         {
           "type": "host",
           "value": "air-cabs.vercel.app"
         }
       ],
-      "destination": "https://airridecabs.in/:path*",
+      "destination": "https://airridecabs.in/",
+      "permanent": true
+    },
+    {
+      "source": "/:path+",
+      "has": [
+        {
+          "type": "host",
+          "value": "air-cabs.vercel.app"
+        }
+      ],
+      "destination": "https://airridecabs.in/:path+",
       "permanent": true
     }
   ],
