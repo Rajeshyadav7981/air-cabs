@@ -15,7 +15,7 @@
   <link rel="icon" href="/favicon.png" type="image/png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="preload" href="/api/fares" as="fetch" crossorigin />
-  <link rel="stylesheet" href="/assets/css/styles.css?v=9" />
+  <link rel="stylesheet" href="/assets/css/styles.css?v=10" />
 </head>
 <body>
   <!-- Icon sprite: reference with <svg class="ic"><use href="#i-name"/></svg> -->
@@ -149,6 +149,19 @@
           <button type="submit" class="btn btn-primary btn-block" id="submitBtn"><span>Book Now</span><svg class="ic"><use href="#i-arrow"/></svg></button>
           <p class="form-note">No advance payment · We'll call you to confirm</p>
         </form>
+
+        <!-- Shown after a successful booking -->
+        <div class="booking-success" id="bookingSuccess" hidden>
+          <div class="bs-tick" aria-hidden="true">✓</div>
+          <h3>Booking received!</h3>
+          <p class="bs-id">Booking ID <b id="bsId"></b></p>
+          <ul class="bs-summary" id="bsSummary"></ul>
+          <a href="#" target="_blank" rel="noopener" class="btn btn-wa btn-block" id="bsWa">
+            <svg class="ic"><use href="#i-wa"/></svg><span>Send booking on WhatsApp</span>
+          </a>
+          <p class="bs-note">Tap to send these details to us on WhatsApp for the fastest confirmation.</p>
+          <button type="button" class="bs-again" id="bsAgain">Book another ride</button>
+        </div>
       </div>
     </div>
   </section>
@@ -371,6 +384,6 @@
 
   <div class="toast" id="toast"></div>
 
-  <script src="/assets/js/app.js?v=8" type="module"></script>
+  <script src="/assets/js/app.js?v=9" type="module"></script>
 </body>
 </html>

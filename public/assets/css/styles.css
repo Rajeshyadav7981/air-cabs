@@ -194,6 +194,20 @@ button { font: inherit; cursor: pointer; border: 0; background: none; }
 .picker-opt[aria-selected="true"] .pk-check { visibility: visible; }
 .pk-group { padding: 10px 10px 4px; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--coral); }
 
+/* Booking success card */
+.booking-success { text-align: center; padding: 8px 4px 4px; animation: fadeUp .35s both; }
+.booking-success[hidden], .booking-form[hidden], .tabs[hidden] { display: none; }
+.bs-tick { width: 64px; height: 64px; margin: 4px auto 12px; border-radius: 50%; display: grid; place-items: center; font-size: 32px; font-weight: 800; color: #fff; background: #1f9d55; box-shadow: 0 0 0 8px #e3f6eb; }
+.booking-success h3 { font-size: 22px; color: var(--primary); }
+.bs-id { color: var(--muted); font-size: 14px; margin: 2px 0 14px; }
+.bs-id b { color: var(--text); letter-spacing: .5px; }
+.bs-summary { list-style: none; text-align: left; background: var(--bg-alt); border-radius: 14px; padding: 12px 14px; margin-bottom: 16px; display: grid; gap: 6px; font-size: 14px; }
+.bs-summary li { display: flex; justify-content: space-between; gap: 12px; }
+.bs-summary span { color: var(--muted); flex-shrink: 0; }
+.bs-summary b { font-weight: 600; text-align: right; }
+.bs-note { font-size: 12px; color: var(--muted); margin: 10px 0 6px; }
+.bs-again { font-weight: 700; color: var(--primary-2); text-decoration: underline; padding: 6px; font-size: 14px; }
+
 .form-note { text-align: center; font-size: 12px; color: var(--muted); }
 
 /* ============ SECTIONS ============ */

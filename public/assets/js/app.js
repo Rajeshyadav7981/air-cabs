@@ -212,6 +212,7 @@ $(".route-tabs").addEventListener("click", e => {
 
 // ============ BOOKING FORM ============
 let trip = "airport";
+const tripLabels = { airport: "Airport Taxi", outstation: "Outstation", oneway: "One Way Drop", local: "Local Taxi" };
 const AIRPORT = "Kempegowda International Airport";
 
 function setTrip(t) {
@@ -284,17 +285,51 @@ $("#bookingForm").addEventListener("submit", async e => {
       showErrors(data.errors || { form: data.error || "Something went wrong. Please try again." });
       return;
     }
-    toast(`✅ Booking ${data.id} received! We'll call you shortly.`, 6000);
-    $("#bookingForm").reset();
-    syncPicker();
-    initDateTime();
-    setTrip(trip);
+    showSuccess(data, payload);
   } catch {
     showErrors({ form: "Network error — please call or WhatsApp us." });
   } finally {
     btn.disabled = false;
     btn.firstElementChild.textContent = "Book Now";
   }
+});
+
+// After booking: swap the form for a confirmation card with a WhatsApp button
+// (a tap is needed — phones block pages from opening WhatsApp on their own)
+function showSuccess(data, p) {
+  const rows = [
+    ["Trip", tripLabels[p.trip] + (p.direction ? ` (${p.direction})` : "")],
+    ["From", p.from],
+    p.to ? ["To", p.to] : null,
+    ["When", `${p.date} ${p.time}`],
+    ["Car", data.vehicle],
+    ["Fare", inr(data.fare)],
+    ["Mobile", "+91 " + p.phone],
+  ].filter(Boolean);
+
+  $("#bsId").textContent = data.id;
+  $("#bsSummary").replaceChildren(...rows.map(([k, v]) => {
+    const li = document.createElement("li");
+    li.append(Object.assign(document.createElement("span"), { textContent: k }), Object.assign(document.createElement("b"), { textContent: v }));
+    return li;
+  }));
+  const msg = [`Hi AirRide Cabs, I just booked on your website.`, `Booking ID: ${data.id}`, ...rows.map(([k, v]) => `${k}: ${v}`)].join("\n");
+  $("#bsWa").href = waLink(msg);
+
+  $("#bookingForm").hidden = true;
+  $(".tabs").hidden = true;
+  $("#bookingSuccess").hidden = false;
+  $(".booking-card").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+$("#bsAgain").addEventListener("click", () => {
+  $("#bookingForm").reset();
+  syncPicker();
+  initDateTime();
+  setTrip(trip);
+  $("#bookingSuccess").hidden = true;
+  $("#bookingForm").hidden = false;
+  $(".tabs").hidden = false;
 });
 
 // Default date = today (IST of the device), time = +2h
