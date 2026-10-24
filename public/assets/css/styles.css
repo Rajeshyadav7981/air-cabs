@@ -274,23 +274,6 @@ button { font: inherit; cursor: pointer; border: 0; background: none; }
 .cta-banner p { color: #3b4a2a; font-weight: 500; }
 .cta-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
-/* ============ REVIEWS ============ */
-.reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.review { background: var(--bg-alt); border-radius: var(--radius); padding: 28px; position: relative; }
-.review::before { content: "“"; position: absolute; top: -10px; right: 22px; font-size: 100px; color: var(--accent); opacity: .35; font-family: Georgia, serif; }
-.stars { color: var(--accent-dark); letter-spacing: 2px; font-size: 18px; }
-.review p { margin: 12px 0 20px; }
-.who { display: flex; align-items: center; gap: 12px; }
-.who small { display: block; color: var(--muted); }
-.avatar { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--primary); color: var(--accent); font-weight: 800; }
-
-/* ============ ABOUT ============ */
-.about { padding-top: 0; }
-.about-inner { max-width: 820px; text-align: center; }
-.about-inner h2 { margin-bottom: 14px; }
-.about-inner p { color: var(--muted); font-size: 16px; margin-top: 10px; }
-.about-inner a { color: var(--primary-2); font-weight: 700; text-decoration: underline; }
-
 /* ============ ROUTES ============ */
 .routes { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
 .route {
@@ -367,7 +350,6 @@ button { font: inherit; cursor: pointer; border: 0; background: none; }
 @media (max-width: 1024px) {
   .hero-inner { grid-template-columns: 1fr; }
   .features { grid-template-columns: repeat(2, 1fr); }
-  .reviews { grid-template-columns: 1fr 1fr; }
   .help-grid { grid-template-columns: 1fr; }
   .help-card { position: static; }
 }
@@ -490,11 +472,6 @@ button { font: inherit; cursor: pointer; border: 0; background: none; }
   .cta-inner { text-align: center; justify-content: center; gap: 16px; }
   .cta-actions { width: 100%; display: grid; gap: 10px; }
   .cta-actions .btn { width: 100%; padding: 14px; font-size: 15px; }
-
-  /* reviews carousel */
-  .reviews { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; margin: 0 -16px; padding: 12px 16px; scrollbar-width: none; }
-  .reviews::-webkit-scrollbar { display: none; }
-  .review { flex: 0 0 85%; scroll-snap-align: center; padding: 20px; }
 
   /* routes 2-up */
   .routes { grid-template-columns: 1fr 1fr; gap: 8px; }
